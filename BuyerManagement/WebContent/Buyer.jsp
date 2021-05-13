@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Buyer Management - GadgetBadget</title>
 
-<link href="myStyle.css" rel="stylesheet" />
+<link href="css/stylesheetnew.css" rel="stylesheet" />
 <link rel="stylesheet" href="View/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
