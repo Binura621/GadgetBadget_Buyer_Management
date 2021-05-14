@@ -9,6 +9,9 @@ $(document).ready(function() {
 
 $(document).on("click", "#btnSave", function(event) {
 
+	
+	
+	//alert(("#buyerName").val());
 	// Clear alerts---------------------
 	$("#alertSuccess").text("");
 	$("#alertSuccess").hide();
@@ -24,7 +27,7 @@ $(document).on("click", "#btnSave", function(event) {
 	}
 	
 	// If valid------------------------
-	var type = ($("#hidBuyerIDSave").val() == "") ? "POST" : "PUT";
+	var type = ($("#buyerID").val() == "") ? "POST" : "PUT";
 
 	$.ajax({
 		url : "BuyerAPI",
@@ -67,7 +70,7 @@ function onItemSaveComplete(response, status) {
 		$("#alertError").show();
 	}
 	
-	$("#hidBuyerIDSave").val("");
+	$("#buyerID").val("");
 	$("#BUYER")[0].reset();
 }
 
@@ -76,10 +79,11 @@ $(document).on("click", ".btnRemove", function(event) {
 	$.ajax({
 		url : "BuyerAPI",
 		type : "DELETE",
-		data : "buyerID=" + $(this).data("buyerID"),
+		data : "buyerID=" + event.target.value,
 		dataType : "text",
 		complete : function(response, status) {
 			onItemDeleteComplete(response.responseText, status);
+			window.location.reload(true);
 		}
 	});
 });
@@ -116,14 +120,13 @@ function onItemDeleteComplete(response, status) {
 
 // UPDATE==========================================
 $(document).on("click",".btnUpdate",function(event)
-		{
-			$("#hidBuyerIDSave").val($(this).data("buyerID"));
-			$("#buyerName").val($(this).closest("tr").find('td:eq(0)').text());
-			$("#projectName").val($(this).closest("tr").find('td:eq(1)').text());
-			$("#email").val($(this).closest("tr").find('td:eq(2)').text());
-			$("#contactNo").val($(this).closest("tr").find('td:eq(3)').text());
-			$("#researcherName").val($(this).closest("tr").find('td:eq(4)').text());
-				
+		{		
+			$("#buyerID").val($(this).closest("tr").find('td:eq(0)').text());
+			$("#buyerName").val($(this).closest("tr").find('td:eq(1)').text());
+			$("#projectName").val($(this).closest("tr").find('td:eq(2)').text());
+			$("#email").val($(this).closest("tr").find('td:eq(3)').text());
+			$("#contactNo").val($(this).closest("tr").find('td:eq(4)').text());
+			$("#researcherName").val($(this).closest("tr").find('td:eq(5)').text());
 		});
 
 
@@ -131,27 +134,27 @@ $(document).on("click",".btnUpdate",function(event)
 function validateItemForm() {
 	
 	// buyerName
-	if ($("#buyerName").val().trim() == "") {
+	if ($("#buyerName").val() == "") {
 		return "Please insert buyerName.";
 	}
 	
 	// projectName
-	if ($("#projectName").val().trim() == "") {
+	if ($("#projectName").val() == "") {
 		return "Please insert projectName.";
 	}
 	
 	// email
-	if ($("#email").val().trim() == "") {
+	if ($("#email").val() == "") {
 		return "Please insert email.";
 	}
 
 	// contactNo
-	if ($("#contactNo").val().trim() == "") {
+	if ($("#contactNo").val() == "") {
 		return "Please insert contactNo.";
 	}
 	
 	// researcherName
-	if ($("#researcherName").val().trim() == "") {
+	if ($("#researcherName").val() == "") {
 		return "Please insert researcherName.";
 	}
 	

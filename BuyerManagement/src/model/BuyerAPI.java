@@ -33,7 +33,8 @@ public class BuyerAPI extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// TODO Auto-generated method stub
-		String outputString = buyerObj.insertBuyer(request.getParameter("buyerName"), 
+		String outputString = buyerObj.insertBuyer(
+				request.getParameter("buyerName"), 
 				request.getParameter("projectName"),
 				request.getParameter("email"), 
 				request.getParameter("contactNo"), 

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="View/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	
 <script src="Components/jquery-3.5.0.min.js"></script>
 <script src="Components/Buyer.js"></script>
 
@@ -35,13 +36,13 @@
 			<legend>
 				<b>Add Buyer Details</b>
 			</legend>
-			<form id="BUYER" name="BUYER" class="border border-light p-5">
+			<form id="BUYER" name="BrUYER" class="border border-light p-5">
+			
 
 				<div class="form-outline mb-4">
-					<label class="form-label" for="form6Example3"
-						class="col-sm-2 col-form-label col-form-label-sm">buyerName:</label>
-					<input type="text" id="	buyerName" class="form-control"
-						name="	buyerName">
+					<label class="form-label" for="form6Example3"class="col-sm-2 col-form-label col-form-label-sm">buyerName:</label>
+					<input type="hidden" id="buyerID" name="buyerID" value="">
+					<input type="text" id="buyerName" class="form-control" name="buyerName">
 				</div>
 
 				<div class="form-outline mb-4">
@@ -70,15 +71,13 @@
 						name="researcherName">
 				</div>
 	</div>
-	<br>
+	
+<br>
+<div id="alertSuccess" class="alert alert-success"></div>
+<div id="alertError" class="alert alert-danger"></div>
+<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary btn-lg btn-block">
 
-	<input id="btnSave" name="btnSave" type="button" value="Save"
-		class="btn btn-primary btn-lg btn-block">
-	<input type="hidden" id="hidBuyerIDSave" name="hidBuyerIDSave" value="">
-	</form>
-
-	<div id="alertSuccess" class="alert alert-success"></div>
-	<div id="alertError" class="alert alert-danger"></div>
+	
 	</fieldset>
 
 	<br>

@@ -32,12 +32,13 @@ public class BuyerServlet {
 				 return "Error while connecting to the database for inserting."; 
 			 } 
 		 	 	 // create a prepared statement
-			 	 String query = "INSERT INTO buyer_table_gui(`buyerID`,`buyerName`,`projectName`,`email`,`contactNo`,`researcherName`)" + " VALUES (?, ?, ?, ?, ?, ?)"; 
+			 	 String query = "INSERT INTO buyer_table_gui(`buyerID`,`buyerName`,`projectName`,`email`,`contactNo`,`researcherName`)  VALUES (?, ?, ?, ?, ?, ?)"; 
 				 PreparedStatement preparedStmt = con.prepareStatement(query); 					 
 				 
 				 // binding values
 				 preparedStmt.setInt(1, 0);
 				 preparedStmt.setString(2, buyerName);
+				 //System.out.println(buyerName);
 				 preparedStmt.setString(3, projectName);
 				 preparedStmt.setString(4, email);
 				 preparedStmt.setString(5, contactNo);
@@ -52,7 +53,9 @@ public class BuyerServlet {
 		 catch (Exception e) 
 		 { 
 			 output = "{\"status\":\"error\", \"data\": \"Error while inserting the Buyer.\"}";
-			 System.err.println(e.getMessage());
+			 System.out.println(e.getMessage());
+				System.out.println(e);
+				e.printStackTrace();
 		 } 
 	 	return output; 
 	 } 
@@ -70,11 +73,12 @@ public class BuyerServlet {
 			 } 
 			 
 			 // Prepare the html table to be displayed
-			 output = "<table border='1'><tr><th>Buyer Name</th>"
-			 + "<th>Project Name</th>" +
-			 "<th>Email</th>" + 
-			 "<th>Contact No</th>" + 
-			 "<th>Researcher Name</th>" +
+			 output = "<table border='1'><tr><th>buyerID</th>"
+			 + "<th>buyerName</th>" +
+			 "<th>projectName</th>" + 
+			 "<th>email</th>" + 
+			 "<th>contactNo</th>" +
+			 "<th>researcherName</th>" +
 			 "<th>Update</th><th>Remove</th></tr>"; 
 		 
 			 
@@ -95,7 +99,9 @@ public class BuyerServlet {
 				 
 				 
 				 // Add into the html table
-				 output += "<tr><td>" + buyerName + "</td>"; 
+				 
+				 output += "<tr><td>" + buyerID + "</td>";
+				 output += "<td>" + buyerName + "</td>"; 
 				 output += "<td>" + projectName + "</td>"; 
 				 output += "<td>" + email + "</td>"; 
 				 output += "<td>" + contactNo + "</td>"; 
@@ -103,9 +109,15 @@ public class BuyerServlet {
 				 
 				 
 				 // buttons
-				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+				/* output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
 				 + "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-itemid='" 
-				 + buyerID + "'>" + "</td></tr>";
+				 + buyerID + "'>" + "</td></tr>"; */
+				 
+				
+				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+				 + "<td><button class='btnRemove btn btn-danger' name='btnRemove' id ='btnRemove' value='"+ buyerID +"' >Remove</button></td></tr>";
+
+
 			 } 
 			 	 con.close(); 
 			 	 // Complete the html table
@@ -114,7 +126,9 @@ public class BuyerServlet {
 		 catch (Exception e) 
 		 { 
 			 output = "Error while reading the buyer"; 
-			 System.err.println(e.getMessage()); 
+			 System.out.println(e.getMessage());
+				System.out.println(e);
+				e.printStackTrace();
 		 } 
 	 	 return output; 
 	 }
@@ -150,7 +164,9 @@ public class BuyerServlet {
 			 catch (Exception e) 
 			 { 
 				 output = "{\"status\":\"error\", \"data\": \"Error while updating the buyer.\"}"; 
-				 System.err.println(e.getMessage()); 
+				 System.out.println(e.getMessage());
+					System.out.println(e);
+					e.printStackTrace(); 
 			 } 
 			 	return output; 
 			 } 
@@ -182,7 +198,9 @@ public class BuyerServlet {
 	 catch (Exception e) 
 	 { 
 		 output = "{\"status\":\"error\", \"data\": \"Error while deleting the buyer.\"}"; 
-		 System.err.println(e.getMessage()); 
+		 System.out.println(e.getMessage());
+			System.out.println(e);
+			e.printStackTrace();
 	 } 
 	 return output; 
 } 
