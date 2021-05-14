@@ -22,7 +22,7 @@ display: inline-block !important;
 
 
 #btnSave {
-background-color: #04AA6D !important;
+background-color: black !important;
 color: white !important;
 padding: 10px 10px !important;
 border: none !important;
@@ -57,14 +57,14 @@ background-color: #ff2424!important;
 
 
 #btnSave:hover {
-background-color: #45a049 !important;
+background-color: grey !important;
 }
 
 
 
 .container {
 border-radius: 5px !important;
-background-color: #f2f2f2 !important;
+background-color: grey !important;
 padding: 20px !important;
 margin-top: 5%;
 }
@@ -91,6 +91,6 @@ tr:nth-child(even){background-color: #f2f2f2 !important}
 
 
 th {
-background-color: #4CAF50 !important;
+background-color: black !important;
 color: white !important;
 }
